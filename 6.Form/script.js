@@ -100,6 +100,3 @@ mode.addEventListener('change', function() {
         document.body.style.color = "black";
     }
 })
-
-
-
