@@ -1,6 +1,6 @@
 
 const children_body = Array.from(document.getElementsByTagName('li'));
-const body = document.querySelector("body");
+const body = document.querySelector("body");  
 const ul = document.querySelector('ul');
 
 
@@ -27,6 +27,8 @@ body.insertBefore(new_div, ul);
 /** @description -- Boucle for...of itere les <li> contenues dans children_body */
 for (let i = 0; i < children_body.length; i++) {
     let element = children_body[i];
+
+
     /** @description -- condition : li.nodeType doit etre = a 1 */
     if (element.nodeType === 1) {
         /** @description -- condition : doit contenir le texte Fast and furious et ne doit pas être le premier element de la liste lors de l'iteration */
@@ -38,6 +40,12 @@ for (let i = 0; i < children_body.length; i++) {
         }
     }
 
+    if (element.classList.contains('important')) {
+        element.style.visibility = 'visible';
+    } else {
+        element.style.visibility = 'hidden';
+    }
+    
     body.addEventListener('keyup', function(event) {
         if (event.key === 'r' || event.key === 'R') {
             /** @description -- Mélanger les éléments, en excluant le premier */
@@ -71,7 +79,6 @@ for (let i = 0; i < children_body.length; i++) {
         }
     });
     
-    
     new_select.addEventListener('change', function () {
         const selectedOption = new_select.value;
         children_body.forEach(function(element) {
@@ -90,13 +97,7 @@ for (let i = 0; i < children_body.length; i++) {
             }
         });
     });
-    
-
-
-
-
 }
-
 
 body.addEventListener('keyup', function(event) {
     if (event.key === 'd' || event.key === 'D') {
